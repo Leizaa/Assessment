@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -14,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", BASE_URL
     }
 
     buildTypes {
@@ -29,15 +33,32 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def apkName = "assesment_yudi.apk"
+            outputFileName = new File(apkName)
+        }
+    }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation androidXLibs.values()
+    implementation googleMaterialLibs.values()
+    implementation retrofitLibs.values()
+    implementation okhttpLibs.values()
+    implementation coroutineLibs.values()
+    implementation glideLibs.values()
+    implementation hiltLibs.values()
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    kapt hiltCompilerLibs.values()
+
+    testImplementation jUnitLibs.values()
+    androidTestImplementation androidTestLibs.values()
 }

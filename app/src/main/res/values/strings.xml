@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Assessment</string>
+    <string name="search_hint">Find user</string>
+
+    <string name="failed_response">Internal Server Error</string>
+    <string name="error_response">Error Call</string>
 </resources>

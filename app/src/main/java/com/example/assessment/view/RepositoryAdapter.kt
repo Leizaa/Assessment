@@ -71,8 +71,8 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewH
                 try {
                     val sdf = SimpleDateFormat(dateFormat, Locale.getDefault())
                     val updatedDate = sdf.parse(it) ?: Date()
-                    val currentDate = Date()
-                    val diff = currentDate.time - updatedDate.time
+                    val currDate = Date()
+                    val diff = currDate.time - updatedDate.time
                     val diffInMin = TimeUnit.MILLISECONDS.toMinutes(diff)
                     val diffInHours = TimeUnit.MILLISECONDS.toHours(diff)
                     val diffInDays = TimeUnit.MILLISECONDS.toDays(diff)

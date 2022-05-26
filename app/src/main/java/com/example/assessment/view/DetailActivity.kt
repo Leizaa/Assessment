@@ -1,5 +1,6 @@
 package com.example.assessment.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.example.assessment.R
 import com.example.assessment.databinding.ActivityDetailBinding
 import com.example.assessment.model.ResponseResult
 import com.example.assessment.model.User
@@ -98,6 +100,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun handleSuccessUserDetail(data: UserDetailResponse?) {
         binding.apply {
             data?.let {
@@ -107,7 +110,7 @@ class DetailActivity : AppCompatActivity() {
                     .into(profileImage)
 
                 fullNameTextView.text = it.fullName
-                usernameTextView.text = it.username
+                usernameTextView.text = "@${it.username}"
 
                 bioTextView.text = it.bio
                 bioTextView.isVisible = it.bio?.isNotBlank() ?: false

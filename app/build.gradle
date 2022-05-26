@@ -36,6 +36,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def apkName = "assesment_yudi.apk"
+            outputFileName = new File(apkName)
+        }
+    }
 }
 
 dependencies {

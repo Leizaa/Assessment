@@ -2,19 +2,15 @@ package com.example.assessment.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.assessment.R
 import com.example.assessment.databinding.ActivityMainBinding
 import com.example.assessment.model.ResponseResult
 import com.example.assessment.model.User
 import com.example.assessment.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,13 +30,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        setupView()
+        initView()
         observeState()
     }
 
-    private fun setupView() {
+    private fun initView() {
         userAdapter = UserAdapter {
-            Toast.makeText(this, "test ${it.username}", Toast.LENGTH_SHORT).show()
+            startActivity(DetailActivity.newInstance(it, this))
         }
 
         binding.mainRecyclerView.apply {

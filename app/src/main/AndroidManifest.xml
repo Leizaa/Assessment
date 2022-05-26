@@ -3,6 +3,7 @@
     package="com.example.assessment">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="false"
@@ -12,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assessment">
         <activity
+            android:name=".view.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

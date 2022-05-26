@@ -1,7 +1,6 @@
 package com.example.assessment.providers
 
-import com.example.assessment.repository.SearchUseCase
-import com.example.assessment.repository.SearchUseCaseImplementation
+import com.example.assessment.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,4 +15,16 @@ object UseCaseProvider {
     fun provideSearchUserListUseCase(
         useCase: SearchUseCaseImplementation
     ): SearchUseCase = useCase
+
+    @Singleton
+    @Provides
+    fun provideGetUserDetailUseCase(
+        useCase: GetUserDetailUseCaseImplementation
+    ): GetUserDetailUseCase = useCase
+
+    @Singleton
+    @Provides
+    fun provideGetRepoUseCase(
+        useCase: GetRepoUseCaseImplementation
+    ): GetRepoUseCase = useCase
 }

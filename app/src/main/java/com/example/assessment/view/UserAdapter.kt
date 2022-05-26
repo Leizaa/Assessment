@@ -53,7 +53,7 @@ class UserAdapter(
                 Glide.with(root)
                     .load(data.imageUrl)
                     .transform(CircleCrop())
-                    .into(userProfileImage)
+                    .into(profileImage)
                 root.setOnClickListener { onClick(data) }
             }
         }
